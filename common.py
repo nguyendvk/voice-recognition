@@ -6,6 +6,7 @@ import pyaudio
 import librosa
 from pydub import AudioSegment
 import warnings
+from shutil import copyfile
 
 warnings.filterwarnings("ignore")
 PATH_DB = './voice_database'
@@ -64,3 +65,5 @@ def init():
         os.makedirs(PATH_DB)
     if not os.path.exists(PATH_MODEL):
         os.makedirs(PATH_MODEL)
+    if not os.path.isfile(os.path.join(PATH_MODEL, 'unknown.gmm')):
+        copyfile('./unknown.gmm', os.path.join(PATH_MODEL,'unknown.gmm'))
