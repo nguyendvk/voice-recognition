@@ -28,18 +28,25 @@ def add_user(source):
             features = np.vstack((features, vector))
         
         # when features of 3 files of speaker are concatenated, then do model training
-        if count == 3: 
-            gmm = GMM(n_components = 16, n_iter = 200, covariance_type='diag',n_init = 4)
-            gmm.fit(features)
-            # saving the trained gaussian model
-            pickle.dump(gmm, open(os.path.join(PATH_MODEL, name + '.gmm'), 'wb'))
-            print(name + ' added successfully') 
+        # if count == 3:
+            # gmm = GMM(n_components = 16, n_iter = 200, covariance_type='diag',n_init = 4)
+            # gmm.fit(features)
+            # # saving the trained gaussian model
+            # pickle.dump(gmm, open(os.path.join(PATH_MODEL, name + '.gmm'), 'wb'))
+            # print(name + ' added successfully') 
             
-            features = np.asarray(())
-            count = 0
+            # features = np.asarray(())
+            # count = 0
         count = count + 1
             
-
+    gmm = GMM(n_components = 20, n_iter = 300, covariance_type='diag',n_init = 3)
+    gmm.fit(features)
+    # saving the trained gaussian model
+    pickle.dump(gmm, open(os.path.join(PATH_MODEL, name + '.gmm'), 'wb'))
+    print(name + ' added successfully') 
+    
+    features = np.asarray(())
+    count = 0
 def add_user_from_console():
     
     name = input("Enter Name: ")
