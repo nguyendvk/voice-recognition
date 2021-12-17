@@ -97,7 +97,7 @@ def recognize_from_console():
 if __name__ == '__main__':
     if len(sys.argv) == 1:
         recognize_from_console()
-    if len(sys.argv) == 2:
+    elif len(sys.argv) == 2:
         FILENAME = sys.argv[1]
         padding(FILENAME, REGCOGNIZE_RECORD_SECONDS)
         recognize()
