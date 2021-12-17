@@ -1,0 +1,18 @@
+dr6-fapb0		Recognized as -  dr6-fapb0
+dr6-mbma1		Recognized as -  dr6-mbma1
+dr5-mbgt0		Recognized as -  dr5-mbgt0
+dr7-fblv0		Recognized as -  dr7-fblv0
+dr3-falk0		Recognized as -  dr3-falk0
+dr5-ftlg0		Recognized as -  dr5-ftlg0
+dr2-marc0		Recognized as -  dr2-marc0
+dr1-fvmh0		Recognized as -  dr1-fvmh0
+dr4-maeb0		Recognized as -  dr4-maeb0
+dr7-madd0		Recognized as -  dr7-madd0
+dr8-fbcg1		Recognized as -  dr8-fbcg1
+dr1-mcpm0		Recognized as -  dr1-mcpm0
+dr2-faem0		Recognized as -  dr2-faem0
+dr3-madc0		Recognized as -  dr3-madc0
+dr4-falr0		Recognized as -  dr4-falr0
+dr8-mbcg0		Recognized as -  dr8-mbcg0
+
+Accuracy = 16/16 = 100.0%

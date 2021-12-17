@@ -12,10 +12,11 @@ from sklearn.mixture import GMM
 def add_user(source):
     name = source.split('/')[-1]
     count = 1
+    features = np.array([])
     for path in os.listdir(source):
         path = os.path.join(source, path)
         padding(path, REGISTER_RECORD_SECONDS)
-        features = np.array([])
+        # features = np.array([])
         
         # reading audio files of speaker
         (sr, audio) = read(path)
@@ -39,7 +40,7 @@ def add_user(source):
             # count = 0
         count = count + 1
             
-    gmm = GMM(n_components = 20, n_iter = 300, covariance_type='diag',n_init = 3)
+    gmm = GMM(n_components = 23, n_iter = 400, covariance_type='diag',n_init = 10)
     gmm.fit(features)
     # saving the trained gaussian model
     pickle.dump(gmm, open(os.path.join(PATH_MODEL, name + '.gmm'), 'wb'))

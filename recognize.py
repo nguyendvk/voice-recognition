@@ -10,9 +10,11 @@ from IPython.display import Audio, display, clear_output
 
 from common import *
 
-def recognize():
+FILENAME = './temp.wav'
+
+def recognize(filename=FILENAME):
     #read test file
-    sr, audio = read(FILENAME)
+    sr, audio = read(filename)
 
     gmm_files = [os.path.join(PATH_MODEL,fname) for fname in 
                 os.listdir(PATH_MODEL) if fname.endswith('.gmm')]
@@ -31,21 +33,22 @@ def recognize():
         gmm = models[i]         
         scores = np.array(gmm.score(vector))
         log_likelihood[i] = scores.sum()
-    print(log_likelihood)
+    
     pred = np.argmax(log_likelihood)
     identity = speakers[pred]
    
     # if voice not recognized than terminate the process
     if identity == 'unknown':
             print("Not Recognized! Try again...")
-            return
+            return identity
     
     print( "Recognized as - ", identity)
+    return identity
 
 def recognize_from_console():
     # Voice Authentication
     
-    FILENAME = "./test.wav"
+    # FILENAME = "./test.wav"
 
     audio = pyaudio.PyAudio()
    
@@ -58,7 +61,7 @@ def recognize_from_console():
     print("recording...")
     frames = []
 
-    for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
+    for i in range(0, int(RATE / CHUNK * REGCOGNIZE_RECORD_SECONDS)):
         data = stream.read(CHUNK)
         frames.append(data)
     print("finished recording")
@@ -92,7 +95,6 @@ def recognize_from_console():
     recognize()
     
 if __name__ == '__main__':
-    FILENAME = './temp.wav'
     if len(sys.argv) == 1:
         recognize_from_console()
     if len(sys.argv) == 2:
